@@ -1,7 +1,7 @@
 # Lobox assignment 
 > React Multi Dropdown Select
 
-Live demo: https://lobox-react-multi-dropdown-select.netlify.app/
+Live demo: https://alizadeh118.github.io/lobox-assignment/
 
 Made by:
 - React
