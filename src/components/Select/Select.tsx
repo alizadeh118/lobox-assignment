@@ -132,6 +132,11 @@ function Select({
                                 onClick={() => {
                                     handleTag(searchTerm)
                                 }}
+                                onKeyDown={(e) => {
+                                    if (e.code === 'Enter') {
+                                        handleTag(searchTerm)
+                                    }
+                                }}
                             >
                                 <span>{searchTerm}</span>
                                 <small className="select__hint">Press enter to add</small>
