@@ -1,35 +1,39 @@
+import './App.scss'
+
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+
+import Select, { type SelectItem } from './components/Select'
 
 function App() {
-  const [count, setCount] = useState(0)
+    const [selectedItems, setSelectedItems] = useState<SelectItem[]>([])
+    const [items, setItems] = useState([
+        { value: 'education', label: 'Education 🎓' },
+        { value: 'science', label: 'Yeeeah, science! ⚗️' },
+        { value: 'art', label: 'Art 🎭' },
+        { value: 'sport', label: 'Sport ⚽️' },
+        { value: 'games', label: 'Games 🎮' },
+        { value: 'health', label: 'Health 🏥' },
+    ])
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    return (
+        <main className="app">
+            <h1>Lobox Assignment</h1>
+            <Select
+                items={items}
+                selectedItems={selectedItems}
+                onChange={(selectedItems) => setSelectedItems(selectedItems)}
+                onTag={(tag) => {
+                    const item = {
+                        value: tag + Math.floor(Math.random() * 10000000),
+                        label: tag,
+                    }
+                    setItems([...items, item])
+                    setSelectedItems([...selectedItems, item])
+                }}
+                placeholder="Pick some"
+            />
+        </main>
+    )
 }
 
 export default App
